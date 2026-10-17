@@ -1,0 +1,45 @@
+{
+  "name": "dsh-client-ui-scrollbar-tuner",
+  "version": "0.1.0",
+  "description": "DeepSeek Harness 客户端插件：全局加粗滚动条，宽度可在插件页调节并持久化。Thicker scrollbars for the DSH client, adjustable from the plugin page.",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "main": "lib/index.js",
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "icon": "./icon.svg",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json",
+    "./locale/en.json": "./locale/en.json",
+    "./locale/zh.json": "./locale/zh.json"
+  },
+  "files": [
+    "lib",
+    "locale",
+    "tools",
+    "cordis.patch.yml",
+    "icon.svg",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node tools/smoke.mjs"
+  },
+  "dsh": {
+    "manifestVersion": 1,
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-locale"
+      ]
+    }
+  }
+}

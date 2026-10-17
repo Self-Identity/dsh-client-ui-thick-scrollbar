@@ -1,0 +1,10 @@
+# Rows this bundle contributes to the profile composition.
+#
+# One row: the Host half (lib/index.js) does nothing, but the row is what the
+# client module graph attaches the browser half (lib/client.js, declared under
+# package.json `dsh.client`) to. Switching the bundle off therefore removes both
+# the settings card and the scrollbar override.
+- insert:
+    - id: client-ui-scrollbar-tuner
+      name: dsh-client-ui-scrollbar-tuner
+      config: {}

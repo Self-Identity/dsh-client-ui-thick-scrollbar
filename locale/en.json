@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Thick Scrollbars",
+    "description": "Makes DSH client scrollbars thicker everywhere; the width is adjustable on the plugin page (4–20px, default 8px)."
+  }
+}
