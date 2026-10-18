@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Offline smoke test for dsh-client-ui-scrollbar-tuner.
+ * Offline smoke test for dsh-client-ui-thick-scrollbar.
  *
  * The browser half is plain JavaScript that talks to the DSH client module
  * table (`window.__ModuleLoader__`), the cordis client context (slots/locale)
@@ -28,9 +28,10 @@ import vm from 'node:vm'
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const source = readFileSync(join(root, 'lib', 'client.js'), 'utf8')
 const manifest = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8'))
-const PKG = 'dsh-client-ui-scrollbar-tuner'
+const PKG = 'dsh-client-ui-thick-scrollbar'
 const NS = 'scrollbarTuner'
 const STORAGE_KEY = PKG + '.settings.v1'
+const LEGACY_STORAGE_KEY = 'dsh-client-ui-scrollbar-tuner.settings.v1'
 const WIDTH_VAR = '--dsh-scrollbar-width'
 
 const failures = []
@@ -159,9 +160,12 @@ function findAll(node, predicate, found = []) {
   return found
 }
 
-function boot(stored) {
+function boot(stored, legacyStored) {
   const document = makeDocument()
-  const localStorage = makeStorage(stored === undefined ? {} : { [STORAGE_KEY]: stored })
+  const entries = {}
+  if (stored !== undefined) entries[STORAGE_KEY] = stored
+  if (legacyStored !== undefined) entries[LEGACY_STORAGE_KEY] = legacyStored
+  const localStorage = makeStorage(entries)
   let entry = null
   const sandbox = {
     window: {
@@ -264,6 +268,13 @@ check('saved width is restored and clamped', () => {
   assert.equal(widthOf(boot('{"width":1}').document), '4px')
   assert.equal(widthOf(boot('{"width":"10"}').document), '10px')
   assert.equal(widthOf(boot('not json').document), '8px')
+})
+
+check('legacy storage key migrates to the new key', () => {
+  const booted = boot(undefined, '{"width":12}')
+  assert.equal(widthOf(booted.document), '12px')
+  assert.equal(JSON.parse(booted.localStorage.getItem(STORAGE_KEY)).width, 12)
+  assert.equal(booted.localStorage.getItem(LEGACY_STORAGE_KEY), '{"width":12}')
 })
 
 check('stylesheet is injected once and tagged with the package', () => {

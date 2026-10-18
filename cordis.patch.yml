@@ -5,6 +5,6 @@
 # package.json `dsh.client`) to. Switching the bundle off therefore removes both
 # the settings card and the scrollbar override.
 - insert:
-    - id: client-ui-scrollbar-tuner
-      name: dsh-client-ui-scrollbar-tuner
+    - id: client-ui-thick-scrollbar
+      name: dsh-client-ui-thick-scrollbar
       config: {}
