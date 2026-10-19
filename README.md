@@ -1,5 +1,8 @@
 # dsh-client-ui-thick-scrollbar
 
+[![npm](https://img.shields.io/npm/v/dsh-client-ui-thick-scrollbar.svg)](https://www.npmjs.com/package/dsh-client-ui-thick-scrollbar)
+[![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 Global scrollbar thickness tuner for the DeepSeek Harness client: widen every scrollbar and adjust the width from the plugin page.
 
 全局加粗 DSH 客户端滚动条，宽度可在插件页调节（4–20px，默认 8px）。
@@ -24,7 +27,7 @@ body { --dsh-scrollbar-width: 5px; }
 ### 安装
 
 1. 客户端左侧 **插件** 页 → **添加插件**；
-2. 选择本包（本地源码目录，或发布后的 npm 包名）；
+2. 填 `dsh-client-ui-thick-scrollbar@1.0.0`（或选择本地源码目录）；
 3. **安装** → **立即启用**；若提示「改动在下次启动生效」，重启客户端；
 4. 卡片显示 **已启用 / 已挂载** 即生效。
 
@@ -84,7 +87,7 @@ This plugin writes the chosen width as an inline custom property on `<body>`. Co
 ### Install
 
 1. Open **Plugins** in the client sidebar, then **Add plugin**.
-2. Choose this package: the local source directory, or the npm package name once published.
+2. Enter `dsh-client-ui-thick-scrollbar@1.0.0` (or choose the local source directory).
 3. **Install**, then **Enable now**; restart the client if it says the change takes effect on the next start.
 4. The card must read **Enabled / Mounted**.
 
@@ -131,3 +134,5 @@ node tools/smoke.mjs
 ## License
 
 MIT. See [LICENSE](./LICENSE).
+
+Not affiliated with DeepSeek. 与 DeepSeek 官方无隶属关系。
