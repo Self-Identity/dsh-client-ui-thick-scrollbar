@@ -3,14 +3,22 @@
   "version": "1.0.0",
   "description": "Global scrollbar thickness tuner for the DeepSeek Harness client: widen every scrollbar and adjust the width from the plugin page. 全局加粗 DSH 客户端滚动条，可在插件页调节宽度。",
   "license": "MIT",
-  "private": true,
+  "author": "Self-Identity",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Self-Identity/dsh-client-ui-thick-scrollbar.git"
+  },
+  "homepage": "https://github.com/Self-Identity/dsh-client-ui-thick-scrollbar#readme",
+  "bugs": {
+    "url": "https://github.com/Self-Identity/dsh-client-ui-thick-scrollbar/issues"
+  },
   "type": "module",
   "main": "lib/index.js",
   "engines": {
-    "node": ">=22.19.0"
+    "node": ">=22.19.0",
+    "dsh": ">=0.2.1-rc.2 <0.3.0"
   },
   "icon": "./icon.svg",
-  "author": "Yan-X-X",
   "keywords": [
     "deepseek-harness",
     "dsh",
@@ -19,14 +27,6 @@
     "appearance",
     "ui"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Yan-X-X/dsh-client-ui-scrollbar-tuner.git"
-  },
-  "homepage": "https://github.com/Yan-X-X/dsh-client-ui-scrollbar-tuner#readme",
-  "bugs": {
-    "url": "https://github.com/Yan-X-X/dsh-client-ui-scrollbar-tuner/issues"
-  },
   "exports": {
     ".": "./lib/index.js",
     "./client": "./lib/client.js",
